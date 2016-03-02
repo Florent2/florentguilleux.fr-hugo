@@ -1,6 +1,7 @@
 baseurl = "http://www.florentguilleux.fr"
 languageCode = "en-us"
 title = "Florent Guilleux"
+publishdir="Florent2.github.io"
 
 [params]
   description = "Software engineer currently working with Ruby and Rails."
