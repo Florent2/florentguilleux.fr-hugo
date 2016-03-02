@@ -1,0 +1,22 @@
+baseurl = "http://www.florentguilleux.fr"
+languageCode = "en-us"
+title = "Florent Guilleux"
+
+[params]
+  description = "Software engineer currently working with Ruby and Rails."
+
+[[menu.main]]
+    name = "Email"
+    url = "mailto:contact@florentguilleux.fr"
+
+[[menu.main]]
+    name = "GitHub"
+    url = "https://github.com/Florent2"
+
+[[menu.main]]
+    name = "stackoverflow"
+    url = "http://stackoverflow.com/users/117704/florent2"
+
+[[menu.main]]
+    name = "Speaker Deck"
+    url = "https://speakerdeck.com/florent2"

@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Florent Guilleux</title>
+    <link>http://www.florentguilleux.fr/posts/</link>
+    <description>Recent content in Posts on Florent Guilleux</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Dec 2014 01:00:00 +0100</lastBuildDate>
+    <atom:link href="http://www.florentguilleux.fr/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Elasticsearch</title>
+      <link>http://www.florentguilleux.fr/posts/elasticsearch/</link>
+      <pubDate>Sat, 06 Dec 2014 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/elasticsearch/</guid>
+      <description>&lt;p&gt;I presented an introduction about Elasticsearch at the Ruby Peru meetup of December 2014. It explains how it differs from a traditional SQL database, and details how is performed a full text search. Here are the slides: &lt;a href=&#34;http://bit.ly/es-rubyperu&#34;&gt;http://bit.ly/es-rubyperu&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Rails anti patterns</title>
+      <link>http://www.florentguilleux.fr/posts/rails-anti-patterns/</link>
+      <pubDate>Fri, 11 Apr 2014 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/rails-anti-patterns/</guid>
+      <description>&lt;p&gt;I presented a few Rails anti patterns at the &lt;a href=&#34;http://ruby.pe/&#34;&gt;Ruby Peru&lt;/a&gt; meetup of April 2014. Here are the slides:&lt;/p&gt;
+
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;4ed4cd10a32801311a754eb53c3a6292&#34; data-ratio=&#34;1.33159947984395&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Handling Requests in Parallel in Rails Applications</title>
+      <link>http://www.florentguilleux.fr/posts/handling-requests-in-parallel-in-rails-applications/</link>
+      <pubDate>Thu, 01 Aug 2013 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/handling-requests-in-parallel-in-rails-applications/</guid>
+      <description>&lt;p&gt;I presented an introduction about handling requests in parallel in Rails applications during the &lt;a href=&#34;http://ruby.pe/&#34;&gt;Ruby Peru&lt;/a&gt; meeting of August 2013.&lt;/p&gt;
+
+&lt;p&gt;If you want to know more I highly recommend the book &lt;a href=&#34;http://www.jstorimer.com/products/working-with-ruby-threads&#34;&gt;Working With Ruby Threads&lt;/a&gt;, from Jesse Storimer.&lt;/p&gt;
+
+&lt;p&gt;Here are the slides:&lt;/p&gt;
+
+&lt;script async class=&#34;speakerdeck-embed&#34; data-id=&#34;80742130dc690130414f7e23ed634b90&#34; data-ratio=&#34;1.33333333333333&#34; src=&#34;//speakerdeck.com/assets/embed.js&#34;&gt;&lt;/script&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Easier Usage of attr_accessible</title>
+      <link>http://www.florentguilleux.fr/posts/easier-usage-of-attr_accessible/</link>
+      <pubDate>Tue, 21 Feb 2012 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/easier-usage-of-attr_accessible/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://guides.rubyonrails.org/security.html#mass-assignment&#34;&gt;&lt;code&gt;attr_accessible&lt;/code&gt; is the recommended method&lt;/a&gt; to protect your attributes from mass assignments in Rails. It lists for a model the attributes that can be mass assigned, other attributes will be protected. But it is tedious to build and update this list of accessible attributes while developing an application.&lt;/p&gt;
+
+&lt;p&gt;Fortunately there are two mechanisms which facilitate the usage of &lt;code&gt;attr_accessible&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;First you can configure your application to create an empty whitelist of attributes available for mass-assignment for all the models. This forces you to explicitly list the accessible attributes of each model, without the risk of forgetting a model or an attribute. To do this just add &lt;code&gt;config.active_record.whitelist_attributes = true&lt;/code&gt; in the configuration &lt;code&gt;application.rb&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When a protected attribute is mass assigned, the attribute value is not modified and by default Rails logs a warning. This makes sometimes hard to realize that some attribute isn’t set or modified through a create or update action because it is protected. Since the version 3.2 it is possible to have an exception raised when a protected attribute is mass assigned. Thus it is much easier to detect attributes that should be made accessible. For that just add &lt;code&gt;config.active_record.mass_assignment_sanitizer = :strict&lt;/code&gt; to your application configuration, or only in &lt;code&gt;development.rb&lt;/code&gt; and &lt;code&gt;test.rb&lt;/code&gt; if your prefer.&lt;/p&gt;
+
+&lt;p&gt;By combining those two mechanisms it is easy to discover progressively the attributes you want to make accessible while developing your application.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Control Over Standards</title>
+      <link>http://www.florentguilleux.fr/posts/control-over-standards/</link>
+      <pubDate>Sun, 02 Oct 2011 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/control-over-standards/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;http://www.kenalder.com/measure/index.htm&#34;&gt;The Measure of All Things&lt;/a&gt; is a great book about the invention the metric system during the French revolution.&lt;/p&gt;
+
+&lt;p&gt;The following passage in particular caught my attention:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Each act of measurement in the Ancien Regime referred to a particular physical standard, held in local hands and safeguarded by local officials. A town’s measure for the length of building materials, for instance, might derive from an iron fathom mortised into the wall of the town’s market hall.
+(…)&lt;/p&gt;
+
+&lt;p&gt;Not only did the physical standards differ from community to community, but the technique of measurement depended on local custom. One district measured grain heaped high in its bushel; another measured grain after it had been leveled off; still another, after the bushel had been struck to settle its contents.
+(…)&lt;/p&gt;
+
+&lt;p&gt;This meant that measurements standards were potentially open to dispute, negotiation, and change (…) Outsiders, of course, did no understand these measures, but local buyers and sellers did - which suggests one of the main advantages of local diversity. They kept outsiders out. Distinctive measures protected small-town traders from big-city merchants, or at least forced the latter to pay the equivalent of a fee before the could enter the local market. Artisanal guilds took charge of their own measures so that they might define their goods in a unique way, identify interlopers, and drive them out of business with ruinous lawsuits. This was as true of gunsmiths and milliners then as it is true of the computer industry today. Control over standards is control over the local rules of economic life, and Ancien Régime standards were everywhere local.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is still true in the Peruvian Andes where the “quintal” weight measurement may differ from village to village.&lt;/p&gt;
+
+&lt;p&gt;I learned that standards wars are not specific to our modern age. Googling a bit more about this, I found &lt;a href=&#34;http://faculty.haas.berkeley.edu/shapiro/wars.pdf&#34;&gt;this article&lt;/a&gt; (PDF) which presents a few other historical examples of standards wars and identifies strategies for companies fighting in such battles.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>An ActiveRecord Plugin to Prevent Destroy if Associations Are Present</title>
+      <link>http://www.florentguilleux.fr/posts/an-activerecord-plugin-to-prevent-destroy-if-associations-are-present/</link>
+      <pubDate>Sun, 07 Aug 2011 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/an-activerecord-plugin-to-prevent-destroy-if-associations-are-present/</guid>
+      <description>&lt;p&gt;I’ve just released a &lt;a href=&#34;https://github.com/Florent2/prevent_destroy_if_any&#34;&gt;small plugin&lt;/a&gt; that adds ActiveRecord models a way to prevent destroy if specified &lt;code&gt;has_many&lt;/code&gt;, &lt;code&gt;has_one&lt;/code&gt; and/or &lt;code&gt;belongs_to&lt;/code&gt; associations are present. This is achieved by adding a before_destroy callback that aborts the destroy and adds a base error on the instance when detecting associations.&lt;/p&gt;
+
+&lt;p&gt;It’s inspired from &lt;a href=&#34;http://stackoverflow.com/questions/4054112/how-do-i-prevent-deletion-of-parent-if-it-has-child-records/4054170#4054170&#34;&gt;this stackoverflow answer&lt;/a&gt; and was created to factorize this solution when you need it for various models in an application.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL Geometric Types in Ruby and Rails</title>
+      <link>http://www.florentguilleux.fr/posts/postgresql-geometric-types-in-ruby-and-rails/</link>
+      <pubDate>Mon, 30 May 2011 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/postgresql-geometric-types-in-ruby-and-rails/</guid>
+      <description>&lt;p&gt;PostgreSQL supports several &lt;a href=&#34;http://www.postgresql.org/docs/8.4/static/datatype-geometric.html&#34;&gt;geometric types&lt;/a&gt; natively (point, line, rectangle, circle…) and &lt;a href=&#34;http://www.postgresql.org/docs/8.4/static/functions-geometry.html&#34;&gt;operations and operators&lt;/a&gt; on these types. Thus PostgreSQL can calculate the distance between 2 points, the diameter of a circle, check if 2 lines intersect or not, if a point is contained in a polygon…&lt;/p&gt;
+
+&lt;p&gt;Let see how to leverage these capabilities in Rails with a small demo application that stores the coordinates of different nodes in a 2D plane.&lt;/p&gt;
+
+&lt;p&gt;First create the application by choosing PostgreSQL for the database: &lt;code&gt;rails new demo-geo-pg -d postgresql&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;and create the development database: &lt;code&gt;rake db:create&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then generate the Node model: &lt;code&gt;rails g model Node name:string coordinates:point&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The &lt;code&gt;coordinates&lt;/code&gt; attribute will store the abscisse and ordinate values of the nodes, it has the PostgreSQL &lt;code&gt;point&lt;/code&gt; type. Rails has generated a migration containing the line &lt;code&gt;t.coordinates :point&lt;/code&gt; to generate the corresponding column. However if we run the migration as it is, it will fail because point is not a native Rails migration type. We need to change this line into &lt;code&gt;t.column :coordinates, :point&lt;/code&gt;. We can now run the migration: &lt;code&gt;rake db:migrate&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now use the the Rails console (&lt;code&gt;rails c&lt;/code&gt;) to create a few Node records:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;gt; Node.create! : Name =&amp;gt; “Node # 1”: coordinates =&amp;gt; “(1.1)”&lt;/code&gt;
+&lt;code&gt;&amp;gt; Node.create! : Name =&amp;gt; “Node # 2”: coordinates =&amp;gt; “(2.2)”&lt;/code&gt;
+&lt;code&gt;&amp;gt; Node.create! : Name =&amp;gt; “Node # 3”: coordinates =&amp;gt; “(-2, -2)”&lt;/code&gt;
+&lt;code&gt;&amp;gt; Node.create! : Name =&amp;gt; “Node # 4”: coordinates =&amp;gt; “(4, -2)”&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In Ruby we handle PostgreSQL geometric values with strings following a defined syntax: for the &lt;code&gt;point&lt;/code&gt; type it is &lt;code&gt;(x,y)&lt;/code&gt; (these syntaxes are described in &lt;a href=&#34;http://www.postgresql.org/docs/8.4/static/datatype-geometric.html&#34;&gt;the PostgreSQL documentation&lt;/a&gt;). If this syntax is not respected, PostgreSQL returns an error when trying to save the record in the database:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;gt; Node.create! : Name =&amp;gt; “Node # 5”: coordinates =&amp;gt; “1”&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;ActiveRecord:: StatementInvalid: PGError: ERROR: invalid input syntax for type point: “1”&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We could validate the format of the coordinate attribute with:
+&lt;code&gt;validates_format_of: coordinates, :with =&amp;gt; /\(-?\d+(?:.\d+)?,-?\d(?:.\d+)?\)/&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now let’s use the PostgreSQL geometric operators on our nodes. Here’s how to get all the nodes located in the circle with center (2,2) and radius 2, using the &lt;code&gt;contains @&amp;gt;&lt;/code&gt; operator:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;gt; Node.where(“circle ‘&amp;lt;(2,2),2&amp;gt;’ @&amp;gt; coordinates”)&lt;/code&gt;
+&lt;code&gt;=&amp;gt; [#&amp;lt;Node id: 1, name: “Node #1”, coordinates: “(1,1)”, created_at: “2011-05-28 15:00:38”, updated_at: “2011-05-28 15:00:38”&amp;gt;, #&amp;lt;Node id: 2, name: “Node #2”, coordinates: “(1,1)”, created_at: “2011-05-28 15:00:48”, updated_at: “2011-05-28 15:00:48”&amp;gt;]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Implementation of an instance method to find the closest node, using the &lt;code&gt;Distance Between &amp;lt;-&amp;gt;&lt;/code&gt; operator:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;def nearest
+  where(“id &amp;lt;&amp;gt; #{id}”).select(“*, coordinates &amp;lt;-&amp;gt; point ‘#{coordinates}’ as distance”).order(“distance asc”).limit(1).first
+end&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;gt; Node.first.nearest&lt;/code&gt;
+&lt;code&gt;=&amp;gt; #&amp;lt;Node id: 2, name: “Node #2”, coordinates: “(1,1)”, created_at: “2011-05-28 15:00:48”, updated_at: “2011-05-28 15:00:48”&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;In some cases the native PostgreSQL geometry types with their functions and operators are adequate and very useful for representing and processing spatial data. When this is not the case, you should use a dedicated tool like &lt;a href=&#34;http://www.postgis.org/&#34;&gt;PostGIS&lt;/a&gt; (there is &lt;a href=&#34;http://virtuoso.rubyforge.org/activerecord-postgis-adapter/&#34;&gt;an adapter for ActiveRecord&lt;/a&gt;). See &lt;a href=&#34;http://stackoverflow.com/questions/1023229/spatial-data-in-postgresql&#34;&gt;this entry on stackoverflow&lt;/a&gt; for more information.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A RSS Feed Listing Every Day New Gems and Updated Gems</title>
+      <link>http://www.florentguilleux.fr/posts/a-rss-feed-listing-every-day-new-gems-and-updated-gems/</link>
+      <pubDate>Fri, 15 Apr 2011 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/a-rss-feed-listing-every-day-new-gems-and-updated-gems/</guid>
+      <description>&lt;p&gt;The RubyGems feed and Twitter stream do not distinguish between new gems and updated gems, and announce each new version of a gem.&lt;/p&gt;
+
+&lt;p&gt;It was hard for me to follow. That’s why I created &lt;a href=&#34;http://gems-summary.heroku.com/&#34;&gt;Gems Summary&lt;/a&gt;. It generates everyday a feed post listing separately the new gems released on RubyGems and the updated gems. If a gem is updated several times during a single day, it is mentioned only once in the post.&lt;/p&gt;
+
+&lt;p&gt;The source code is on &lt;a href=&#34;https://github.com/Florent2/gems-summary&#34;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Improve Your Rails Development Workflow</title>
+      <link>http://www.florentguilleux.fr/posts/improve-your-rails-development-workflow/</link>
+      <pubDate>Mon, 28 Mar 2011 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/improve-your-rails-development-workflow/</guid>
+      <description>&lt;p&gt;Here the slides of a presentation I gave for the &lt;a href=&#34;http://ruby.pe&#34;&gt;Ruby Peru&lt;/a&gt; group on March 26, 2011: &lt;a href=&#34;https://speakerdeck.com/florent2/improve-your-rails-development-workflow&#34;&gt;Improve Your Rails Development Workflow&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;It’s about gems and plugins I use to ease the development of my Rails applications, not processes or programming techniques.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A Single Task to Migrate, Redo Migration, Prepare Test Db and Annotate</title>
+      <link>http://www.florentguilleux.fr/posts/a-single-task-to-migrate-redo-migration-prepare-test-db-and-annotate/</link>
+      <pubDate>Wed, 09 Feb 2011 01:00:00 +0100</pubDate>
+      
+      <guid>http://www.florentguilleux.fr/posts/a-single-task-to-migrate-redo-migration-prepare-test-db-and-annotate/</guid>
+      <description>&lt;p&gt;Hi!&lt;/p&gt;
+
+&lt;p&gt;My first blog post to announce my first gem: &lt;a href=&#34;https://github.com/Florent2/migrate-well&#34;&gt;migrate-well&lt;/a&gt;. It’s a very simple one, it adds a rake task &lt;code&gt;db:migrate:well&lt;/code&gt; that runs the tasks &lt;code&gt;db:migrate&lt;/code&gt;, &lt;code&gt;db:migrate:redo&lt;/code&gt;, &lt;code&gt;rake db:test:prepare&lt;/code&gt; and &lt;code&gt;annotate&lt;/code&gt;. I was tired to type all those commands each time…&lt;/p&gt;
+
+&lt;p&gt;To install: add &lt;code&gt;gem “migrate-well”&lt;/code&gt; in your Gemfile and run &lt;code&gt;bundle install&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;To run: &lt;code&gt;rake db:migrate:well&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Options (updated February 15, 2011):&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;redo=false&lt;/code&gt;: don’t run the &lt;code&gt;db:migrate:redo&lt;/code&gt; task&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;test=false&lt;/code&gt;: don’t run the &lt;code&gt;db:test:prepare&lt;/code&gt; task&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;anno=false&lt;/code&gt;: don’t run the &lt;code&gt;annotate&lt;/code&gt; command&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;run without annotating: &lt;code&gt;rake db:migrate:well anno=false&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;run without annotating and without redoing the migration: &lt;code&gt;rake db:migrate:well anno=false redo=false&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;That’s all!&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

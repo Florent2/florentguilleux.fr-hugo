@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/</loc>
+    <lastmod>2014-12-06T01:00:00+01:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/elasticsearch/</loc>
+    <lastmod>2014-12-06T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/rails-anti-patterns/</loc>
+    <lastmod>2014-04-11T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/handling-requests-in-parallel-in-rails-applications/</loc>
+    <lastmod>2013-08-01T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/easier-usage-of-attr_accessible/</loc>
+    <lastmod>2012-02-21T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/control-over-standards/</loc>
+    <lastmod>2011-10-02T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/an-activerecord-plugin-to-prevent-destroy-if-associations-are-present/</loc>
+    <lastmod>2011-08-07T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/postgresql-geometric-types-in-ruby-and-rails/</loc>
+    <lastmod>2011-05-30T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/a-rss-feed-listing-every-day-new-gems-and-updated-gems/</loc>
+    <lastmod>2011-04-15T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/improve-your-rails-development-workflow/</loc>
+    <lastmod>2011-03-28T01:00:00+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www.florentguilleux.fr/posts/a-single-task-to-migrate-redo-migration-prepare-test-db-and-annotate/</loc>
+    <lastmod>2011-02-09T01:00:00+01:00</lastmod>
+  </url>
+  
+</urlset>

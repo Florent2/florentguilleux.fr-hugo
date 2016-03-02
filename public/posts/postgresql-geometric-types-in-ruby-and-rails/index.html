@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" PostgreSQL Geometric Types in Ruby and Rails &middot;  Florent Guilleux" />
+  
+  <meta property="og:site_name" content="Florent Guilleux" />
+  <meta property="og:url" content="http://www.florentguilleux.fr/posts/postgresql-geometric-types-in-ruby-and-rails/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2011-05-30T01:00:00&#43;01:00" />
+  
+  
+
+  <title>
+     PostgreSQL Geometric Types in Ruby and Rails &middot;  Florent Guilleux
+  </title>
+
+  <link rel="stylesheet" href="http://www.florentguilleux.frcss/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://www.florentguilleux.frcss/main.css" />
+  <link rel="stylesheet" href="http://www.florentguilleux.frcss/font-awesome.min.css" />
+  <link rel="stylesheet" href="http://www.florentguilleux.frcss/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="http://www.florentguilleux.frimages/favicon.ico" />
+  <link rel="apple-touch-icon" href="http://www.florentguilleux.frimages/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="http://www.florentguilleux.fr">Florent Guilleux</a></h1>
+      
+      <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+      
+      <a href="http://www.florentguilleux.fr" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">PostgreSQL Geometric Types in Ruby and Rails</h1>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2011-05-30T01:00:00&#43;01:00">
+          May 30, 2011
+        </time>
+      </div>
+      <div class="pull-right">
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    <p>PostgreSQL supports several <a href="http://www.postgresql.org/docs/8.4/static/datatype-geometric.html">geometric types</a> natively (point, line, rectangle, circle…) and <a href="http://www.postgresql.org/docs/8.4/static/functions-geometry.html">operations and operators</a> on these types. Thus PostgreSQL can calculate the distance between 2 points, the diameter of a circle, check if 2 lines intersect or not, if a point is contained in a polygon…</p>
+
+<p>Let see how to leverage these capabilities in Rails with a small demo application that stores the coordinates of different nodes in a 2D plane.</p>
+
+<p>First create the application by choosing PostgreSQL for the database: <code>rails new demo-geo-pg -d postgresql</code></p>
+
+<p>and create the development database: <code>rake db:create</code></p>
+
+<p>Then generate the Node model: <code>rails g model Node name:string coordinates:point</code></p>
+
+<p>The <code>coordinates</code> attribute will store the abscisse and ordinate values of the nodes, it has the PostgreSQL <code>point</code> type. Rails has generated a migration containing the line <code>t.coordinates :point</code> to generate the corresponding column. However if we run the migration as it is, it will fail because point is not a native Rails migration type. We need to change this line into <code>t.column :coordinates, :point</code>. We can now run the migration: <code>rake db:migrate</code></p>
+
+<p>Now use the the Rails console (<code>rails c</code>) to create a few Node records:</p>
+
+<p><code>&gt; Node.create! : Name =&gt; “Node # 1”: coordinates =&gt; “(1.1)”</code>
+<code>&gt; Node.create! : Name =&gt; “Node # 2”: coordinates =&gt; “(2.2)”</code>
+<code>&gt; Node.create! : Name =&gt; “Node # 3”: coordinates =&gt; “(-2, -2)”</code>
+<code>&gt; Node.create! : Name =&gt; “Node # 4”: coordinates =&gt; “(4, -2)”</code></p>
+
+<p>In Ruby we handle PostgreSQL geometric values with strings following a defined syntax: for the <code>point</code> type it is <code>(x,y)</code> (these syntaxes are described in <a href="http://www.postgresql.org/docs/8.4/static/datatype-geometric.html">the PostgreSQL documentation</a>). If this syntax is not respected, PostgreSQL returns an error when trying to save the record in the database:</p>
+
+<p><code>&gt; Node.create! : Name =&gt; “Node # 5”: coordinates =&gt; “1”</code></p>
+
+<p><code>ActiveRecord:: StatementInvalid: PGError: ERROR: invalid input syntax for type point: “1”</code></p>
+
+<p>We could validate the format of the coordinate attribute with:
+<code>validates_format_of: coordinates, :with =&gt; /\(-?\d+(?:.\d+)?,-?\d(?:.\d+)?\)/</code></p>
+
+<p>Now let’s use the PostgreSQL geometric operators on our nodes. Here’s how to get all the nodes located in the circle with center (2,2) and radius 2, using the <code>contains @&gt;</code> operator:</p>
+
+<p><code>&gt; Node.where(“circle ‘&lt;(2,2),2&gt;’ @&gt; coordinates”)</code>
+<code>=&gt; [#&lt;Node id: 1, name: “Node #1”, coordinates: “(1,1)”, created_at: “2011-05-28 15:00:38”, updated_at: “2011-05-28 15:00:38”&gt;, #&lt;Node id: 2, name: “Node #2”, coordinates: “(1,1)”, created_at: “2011-05-28 15:00:48”, updated_at: “2011-05-28 15:00:48”&gt;]</code></p>
+
+<p>Implementation of an instance method to find the closest node, using the <code>Distance Between &lt;-&gt;</code> operator:</p>
+
+<p><code>def nearest
+  where(“id &lt;&gt; #{id}”).select(“*, coordinates &lt;-&gt; point ‘#{coordinates}’ as distance”).order(“distance asc”).limit(1).first
+end</code></p>
+
+<p><code>&gt; Node.first.nearest</code>
+<code>=&gt; #&lt;Node id: 2, name: “Node #2”, coordinates: “(1,1)”, created_at: “2011-05-28 15:00:48”, updated_at: “2011-05-28 15:00:48”&gt;</code></p>
+
+<p>In some cases the native PostgreSQL geometry types with their functions and operators are adequate and very useful for representing and processing spatial data. When this is not the case, you should use a dedicated tool like <a href="http://www.postgis.org/">PostGIS</a> (there is <a href="http://virtuoso.rubyforge.org/activerecord-postgis-adapter/">an adapter for ActiveRecord</a>). See <a href="http://stackoverflow.com/questions/1023229/spatial-data-in-postgresql">this entry on stackoverflow</a> for more information.</p>
+
+  </section>
+  <footer>
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="http://www.florentguilleux.fr/posts/a-rss-feed-listing-every-day-new-gems-and-updated-gems/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next"><a href="http://www.florentguilleux.fr/posts/an-activerecord-plugin-to-prevent-destroy-if-associations-are-present/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <script src="http://www.florentguilleux.frjs/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+</body>
+</html>
+
